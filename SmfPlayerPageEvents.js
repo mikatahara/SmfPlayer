@@ -4,16 +4,24 @@ window.addEventListener("load", function(){
 	document.getElementById("evi1").addEventListener("change", function(){seteVY1(this)}, false); 
 }, true);
 
-window.addEventListener("load", function(){
-	var mCount=0;
-	var meVY1=0;
-	var timerId=0;
+	var mCount	=0;
+	var meVY1	=0;
+	var timerId	=0;
 	var timerId2=0;
 
-	var ele = document.getElementById("log");
-	var ele2 = document.getElementById("pos");
+	var ele = null;
+	var ele2 = null;
+
+
+window.addEventListener("load", function(){
+	mCount	=0;
+	meVY1	=0;
+	timerId	=0;
+	timerId2=0;
+	ele		= document.getElementById("log");
+	ele2	= document.getElementById("pos");
 	runTest2();
-});
+}, false);
 
 //	document.getElementById("ton").addEventListener("click", function(){playStart()}, false); 
 //	document.getElementById("toff").addEventListener("click", function(){playStop()}, false); 
