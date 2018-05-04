@@ -5,7 +5,6 @@ window.addEventListener("load", function(){
 }, true);
 
 window.addEventListener("load", function(){
-{
 	var mCount=0;
 	var meVY1=0;
 	var timerId=0;
@@ -14,7 +13,7 @@ window.addEventListener("load", function(){
 	var ele = document.getElementById("log");
 	var ele2 = document.getElementById("pos");
 	runTest2();
-}
+});
 
 //	document.getElementById("ton").addEventListener("click", function(){playStart()}, false); 
 //	document.getElementById("toff").addEventListener("click", function(){playStop()}, false); 
@@ -158,7 +157,7 @@ window.addEventListener("load", function(){
 		}
 		else if( event.data[0] ==0xFC ){
 			playStop();
-		return;
+			return;
 		}
 
 		if( event.data.length>1) {
