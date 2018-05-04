@@ -13,6 +13,7 @@ window.addEventListener("load", function(){
 
 	var ele = document.getElementById("log");
 	var ele2 = document.getElementById("pos");
+	runTest2();
 }
 
 //	document.getElementById("ton").addEventListener("click", function(){playStart()}, false); 
@@ -142,7 +143,6 @@ window.addEventListener("load", function(){
 		}, 1 );
 
 	}
-}
 
 //}, true);
 
