@@ -8,10 +8,11 @@ window.addEventListener("load", function(){
 {
 	var mCount=0;
 	var meVY1=0;
-	var ele = document.getElementById("log");
-	var ele2 = document.getElementById("pos");
 	var timerId=0;
 	var timerId2=0;
+
+//	var ele = document.getElementById("log");
+//	var ele2 = document.getElementById("pos");
 
 //	document.getElementById("ton").addEventListener("click", function(){playStart()}, false); 
 //	document.getElementById("toff").addEventListener("click", function(){playStop()}, false); 
