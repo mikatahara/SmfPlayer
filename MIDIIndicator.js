@@ -21,7 +21,7 @@ window.addEventListener('load', function (){
 
 	fdg1.fSetViewPort(0,48,0,18);
 	
-		fdg1.fFillColor("#777777");
+		fdg1.fFillColor("#888888");
 	for(var j=1; j<=1+16; j++){
 		for(var i=8; i<=8+32; i++){
 			fdg1.fDrawArcXY(i,j,10);
