@@ -208,80 +208,87 @@ window.addEventListener("load", function(){
 
 	// Process of read click button
 	document.getElementById("read").addEventListener("click", function(){
-		var textFile = document.getElementById("filedata").files[0];
-
-		// 選択されたファイル情報
-		ele.innerText = "file name:";
-		ele.innerText += textFile.name;
-		ele.innerText += "\n";
-		ele.innerText += "file size:";
-		ele.innerText += textFile.size;
-		ele.innerText += "byte\n";
-		ele.innerText += "MIME Type：";
-		ele.innerText += textFile.type;
-		ele.innerText += "\n";
-		ele.innerText += "---------------\n";
-
-		// File reader process
-		reader = new FileReader();
-
-		reader.onload = function(evt){
-			// Uint8Array Object
-			var ary_u8 = new Uint8Array(evt.target.result);
-			var n=0;
-
-			if(!compchar(ary_u8, n, 4,"MThd")) return;
-			n+=4;
-
-			ele.textContent += "binary size=";
-			ele.textContent += changeint(ary_u8,n,4);
-			ele.textContent += "\n";
-			n+=4;
-
-			mFormat= changeint(ary_u8,n,2); n+=2;
-			mNtrks= changeint(ary_u8,n,2); n+=2;
-			mDivision= changeint(ary_u8,n,2); n+=2;
-			ele.textContent += "format=";
-			ele.textContent += mFormat;
-			ele.textContent += " division=";
-			ele.textContent += mDivision;
-			ele.textContent += "\n";
-
-			mTrack=new Array(mNtrks);
-			for(var i=0; i<mNtrks; i++){
-				mTrack[i]=new MTrk();
-				mTrack[i].mTrnum=i;
-			}
-			var mlength=0;
-			for(var i=0; i<mNtrks; i++){
-				if(!compchar(ary_u8, n, 4,"MTrk")) return;
-				n+=4;
-				mlength = changeint(ary_u8,n,4);
-				n+=4;
-				mTrack[i].fSetdata(mlength,ary_u8,n);
-				n+=mlength;
-			}
-
-			for(var i=0; i<mNtrks; i++){
-				while(mTrack[i].mEnd==0){
-					mTrack[i].fDeleteFF();
-					mTrack[i].fEvent();
-//					console.log(i,mTrack[i].mNexttime,mTrack[i].mStatus);
-				}
-			}
-
-		}
-
-		reader.onerror = function(evt){
-			var errorNo = evt.target.error.code
-			ele.innerHTML += "Error:"+errorNo;
-		}
-
-		reader.readAsArrayBuffer(textFile);
-
+		LoadSMFFile();
 	}, true);
 
 }, true);
+
+function LoadSMFFile()
+{
+	var textFile = document.getElementById("filedata").files[0];
+
+	// 選択されたファイル情報
+	ele.innerText = "file name:";
+	ele.innerText += textFile.name;
+	ele.innerText += "\n";
+	ele.innerText += "file size:";
+	ele.innerText += textFile.size;
+	ele.innerText += "byte\n";
+	ele.innerText += "MIME Type：";
+	ele.innerText += textFile.type;
+	ele.innerText += "\n";
+	ele.innerText += "---------------\n";
+
+	// File reader process
+	reader = new FileReader();
+
+	reader.onload = function(evt){
+		// Uint8Array Object
+		var ary_u8 = new Uint8Array(evt.target.result);
+		var n=0;
+
+		if(!compchar(ary_u8, n, 4,"MThd")) return;
+		n+=4;
+
+		ele.textContent += "binary size=";
+		ele.textContent += changeint(ary_u8,n,4);
+		ele.textContent += "\n";
+		n+=4;
+
+		mFormat= changeint(ary_u8,n,2); n+=2;
+		mNtrks= changeint(ary_u8,n,2); n+=2;
+		mDivision= changeint(ary_u8,n,2); n+=2;
+		ele.textContent += "format=";
+		ele.textContent += mFormat;
+		ele.textContent += " division=";
+		ele.textContent += mDivision;
+		ele.textContent += "\n";
+
+		mTrack=new Array(mNtrks);
+		for(var i=0; i<mNtrks; i++){
+			mTrack[i]=new MTrk();
+			mTrack[i].mTrnum=i;
+		}
+		var mlength=0;
+		for(var i=0; i<mNtrks; i++){
+			if(!compchar(ary_u8, n, 4,"MTrk")) return;
+			n+=4;
+			mlength = changeint(ary_u8,n,4);
+			n+=4;
+			mTrack[i].fSetdata(mlength,ary_u8,n);
+			n+=mlength;
+		}
+
+		for(var i=0; i<mNtrks; i++){
+			while(mTrack[i].mEnd==0){
+				mTrack[i].fDeleteFF();
+				mTrack[i].fEvent();
+				console.log(i,mTrack[i].mNexttime,mTrack[i].mStatus);
+			}
+		}
+
+	}
+
+	reader.onerror = function(evt){
+		var errorNo = evt.target.error.code
+		ele.innerHTML += "Error:"+errorNo;
+	}
+
+	reader.readAsArrayBuffer(textFile);
+}
+
+
+
 
 //-- 	------------------------------------------------------------------	-->
 /* Subroutine for reading SMF */

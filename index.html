@@ -15,35 +15,69 @@
 <body bgcolor="#222222" text="#dddddd" link="#0000ff" vlink="#ff00ff" alink="#ff0000" style="margin-right:28px;margin-left:28px;margin-top:20px;">
 <center><h2>SMF PLAYER</h2></center>
 
+  <style type="text/css">
+    <!--
+	#log {
+	width:20em;
+		height:12em;
+		margin:.5em 0 .5em 0;
+		padding:.5em;
+		background-color:#222222;
+		border:solid 1px #dddddd;
+		white-space:pre;
+		font-family:Courier New, monospace;
+		font-size:12pt;
+		overflow:auto;
+	}
+	#pos {
+	width:20em;
+		height:12em;
+		margin:.5em 0 .5em 0;
+		padding:.5em;
+		background-color:#222222;
+		border:solid 1px #dddddd;
+		white-space:pre;
+		font-family:Courier New, monospace;
+		font-size:12pt;
+		overflow:auto;
+	}
+    -->
+    </style>
+
+
 <!-- 	------------------------------------------------------------------	-->
 <br>
-<div id="sans">
-SMF:
+<div id="sans" style="color: #dddddd;">
+LOGS:
 </div>
-<div id="log" style="color: #222222; font-family:sans-serif; font-size: 10pt;">
+<div id="log">
 1)Select MIDI file
 2)Click "Load File"
 3)Click "Play" to start playing
 4)Click "Stop" to stop playing.
 </div>
 
-<div id="pos" style="color: #222222; font-family:sans-serif; font-size: 10pt;">
+<div id="pos" style="color: #dddddd;">
 </font>
 </div>
 
 <!--	------------------------------------------------------------------ -->
-<form id="sans" style="color: #222222; position: absolute; top:74px; left:320px;">
+<form id="sans" style="color: #222222; position: absolute; top:74px; left:360px;">
 <label for="filedata" style="background-color:#dddddd; padding: 2px 20px; border-radius: 12px; width:400px">
 	Select SMF File
-<input type="file" id="filedata" style="display:none;" accept="audio/*">
+<input type="file" id="filedata" style="display:none;" accept="audio/*" onchange="handleFiles(this.files)">
 </label>
 </form>
 
+<form id="sans" style="color: #dddddd; position: absolute; top:74px; left:520px;">
+<input type="checkbox" id="evi1" value=1 >For eVY1
+</form>
+
+<!--	------------------------------------------------------------------ -->
 <form id="sans" style="color: #dddddd;">
 <input type="button" id="read" value="Load File">
 <input type="button" id="ton" value="Play">
 <input type="button" id="toff" value="Stop"><br>
-<input type="checkbox" id="evi1" value=1 >For eVY1
 </form>
 
 
