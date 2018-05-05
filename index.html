@@ -65,9 +65,11 @@ LOGS:
 <form id="sans" style="color: #222222; position: absolute; top:74px; left:360px;">
 <label for="filedata" style="background-color:#dddddd; padding: 2px 20px; border-radius: 12px; width:400px">
 	Select SMF File
-<input type="file" id="filedata" style="display:none;" accept="audio/*" onchange="handleFiles(this.files)">
+<input type="file" id="filedata" style="display:none;" accept="audio/*" onchange="LoadSMFFile()">
 </label>
 </form>
+
+<!-- (this.files) -->
 
 <form id="sans" style="color: #dddddd; position: absolute; top:74px; left:520px;">
 <input type="checkbox" id="evi1" value=1 >For eVY1
