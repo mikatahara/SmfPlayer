@@ -6,7 +6,9 @@
 	<meta name="Keywords" content="webMIDIAPI,WebMidiApi,webmidiapi">
 	<script type="text/javascript" src="myreadSMF.js"></script>
 	<script type="text/javascript" src="SmfPlayerPageEvents.js"></script>
+	<script type="text/javascript" src="MIDIIndicator.js"></script>
 	<script src="https://mikatahara.github.io/mywebmidiapi.js" type="text/javascript"></script>
+	<script src="https://mikatahara.github.io/drawgraph.js" type="text/javascript"></script>
 	<link rel="stylesheet" media="screen" href="https://mikatahara.github.io/mywebmidiapi.css">
 	<title>SMF FILE Player</title>
 </HEAD>
@@ -18,28 +20,40 @@
   <style type="text/css">
     <!--
 	#log {
-	width:20em;
-		height:12em;
+		width:840px;
+		height:120px;
+		position: absolute; top:120px; left:20px;
 		margin:.5em 0 .5em 0;
 		padding:.5em;
 		background-color:#222222;
-//		border:solid 1px #dddddd;
+		border:solid 1px #dddddd;
 		white-space:pre;
 		font-family:Courier New, monospace;
 		font-size:12pt;
 		overflow:auto;
 	}
 	#pos {
-	width:20em;
-		height:2em;
+		width:340px;
+		height:120px;
+		position: absolute; top:120px; left:900px;
 		margin:.5em 0 .5em 0;
 		padding:.5em;
 		background-color:#222222;
-//		border:solid 1px #dddddd;
+		border:solid 1px #dddddd;
 		white-space:pre;
 		font-family:Courier New, monospace;
 		font-size:12pt;
 		overflow:auto;
+	}
+	#bkg {
+		width: 1240px;
+		height: 330px;
+		position: absolute; top:290px; left:20px;
+		padding: 0;
+		margin: auto;
+		display: block;
+		background-color:#222222;
+		border:solid 1px #dddddd;
 	}
     -->
     </style>
@@ -47,60 +61,28 @@
 
 <!-- 	------------------------------------------------------------------	-->
 <br>
-<div id="sans" style="color: #dddddd;">
-LOGS:
-</div>
 <div id="log">
+</div>
+
+<div id="pos" style="color: #dddddd;">
 1)Select MIDI file
 2)Click "Load File"
 3)Click "Play" to start playing
 4)Click "Stop" to stop playing.
 </div>
 
-<div id="pos" style="color: #dddddd;">
-</font>
-</div>
-
 <!--	------------------------------------------------------------------ -->
-<form id="sans" style="color: #222222; position: absolute; top:74px; left:360px;">
+<form id="sans" style="color: #222222; position: absolute; top:74px; left:350px;">
 <label for="filedata" style="background-color:#dddddd; padding: 2px 20px; border-radius: 12px; width:400px">
 	Select SMF File
 <input type="file" id="filedata" style="display:none;" accept="audio/*" onchange="LoadSMFFile()">
 </label>
 </form>
 
-<!-- (this.files) -->
-
-<form id="sans" style="color: #dddddd; position: absolute; top:74px; left:520px;">
-<input type="checkbox" id="evi1" value=1 >For eVY1
-</form>
-
-<!--	------------------------------------------------------------------ -->
-<form id="sans" style="color: #dddddd;">
-<input type="button" id="read" value="Load File">
-<input type="button" id="ton" value="Play">
-<input type="button" id="toff" value="Stop"><br>
-</form>
-
-
 <!--	------------------------------------------------------------------ -->
 <div id="sans" style="background-color: #222222; 
 	color: #dddddd; position: absolute; top:56px; left:100px;">
 <br>
-<!--
-<form name="input_device_select">Input：
-<select name="ids" onChange="inputDeviceSelect2(this);">
-<option value="0">No Device
-</select>
-</form>
-<script>
-	setInputMenuID(document.input_device_select.ids);
-	function inputDeviceSelect2(d){
-		inputDeviceSelect(d);
-		input.onmidimessage = handleMIDIMessage2; 	//add for Page 18, MIDI message monitor
-	}
-</script>
--->
 
 <form name="output_device_select">Output Port：
 <select name="ids" onChange="outputDeviceSelect(this);">
@@ -109,6 +91,22 @@ LOGS:
 </form>
 <script>setOutputMenuID(document.output_device_select.ids);</script>
 </div>
+
+<!--	------------------------------------------------------------------ -->
+<form id="sans" style="color: #dddddd; position: absolute; top:640px; left:46%;">
+<input type="button" id="ton" value="Play">
+<input type="button" id="toff" value="Stop"><br>
+</form>
+
+<!--	------------------------------------------------------------------ -->
+
+<form id="sans" style="color: #dddddd; position: absolute; top:74px; left:520px;">
+<input type="checkbox" id="evi1" value=1 >For eVY1
+</form>
+
+<!-- ------------------------------------------------------------ -->
+<canvas id="bkg"></canvas>
+</center>
 
 </body>
 <!-- ------------------------------------------------------------ -->
