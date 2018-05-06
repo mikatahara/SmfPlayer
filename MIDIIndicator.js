@@ -39,17 +39,17 @@ function setLEDOn(ch, note)
 {
 	note-=48;
 	if(note>=32) note=32;
+	else if(note<0) note=0;
 
 	fdg1.fFillColor("#FF8800");
 	fdg1.fDrawArcXY(note+nNot,ch+nNch,nArc);
-
-
 }
 
 function setLEDOff(ch, note)
 {
 	note-=48;
 	if(note>=32) note=32;
+	else if(note<0) note=0;
 
 	fdg1.fFillColor("#888888");
 	fdg1.fDrawArcXY(note+nNot,ch+nNch,nArc);
