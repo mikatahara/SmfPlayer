@@ -42,6 +42,8 @@ function setLEDOn(ch, note)
 
 	fdg1.fFillColor("#FF8800");
 	fdg1.fDrawArcXY(note+nNot,ch+nNch,nArc);
+
+
 }
 
 function setLEDOff(ch, note)
