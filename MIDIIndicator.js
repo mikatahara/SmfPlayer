@@ -46,7 +46,7 @@ function setLEDOn(ch, note)
 	if(note>=32) note=32;
 	else if(note<0) note=0;
 
-	fdg1.fFillColor(mICOLOR[ch);
+	fdg1.fFillColor(mICOLOR[ch]);
 	fdg1.fDrawArcXY(note+nNot,ch+nNch,nArc);
 }
 
