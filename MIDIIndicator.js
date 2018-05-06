@@ -36,8 +36,8 @@ function setLEDstatus(status,data1,data2){
 }
 
 var mICOLOR = [ 
-"#ff3E00", "#ff3C10", "#ff3A20", "#ff3830", "#ff3640", "#ff3450", "#ff3260", "#ff3070",
-"#ff2E80", "#ff2C90", "#ff2AA0", "#ff28B0", "#ff26C0", "#ff24D0", "#ff22E0", "#ff20F0"
+"#ffF000", "#ffE010", "#ffD020", "#ffC030", "#ffB040", "#ffA050", "#ff9060", "#ff8070",
+"#ff7080", "#f60C90", "#ff50A0", "#ff40B0", "#ff30C0", "#ff20D0", "#ff10E0", "#ff00F0"
 ];
 
 function setLEDOn(ch, note)
@@ -46,7 +46,7 @@ function setLEDOn(ch, note)
 	if(note>=32) note=32;
 	else if(note<0) note=0;
 
-	fdg1.fFillColor(mICOLOR[ch]);
+	fdg1.fFillColor(mICOLOR[ch);
 	fdg1.fDrawArcXY(note+nNot,ch+nNch,nArc);
 }
 
