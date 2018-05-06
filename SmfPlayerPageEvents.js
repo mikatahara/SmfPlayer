@@ -102,6 +102,7 @@ window.addEventListener("load", function(){
 					case 0xA0:
 					case 0xB0:
 					case 0xE0:
+						setLEstatusD(mTrack[i].mStatus,mTrack[i].mMdata1,mTrack[i].mMdata2);
 						if(!meVY1){
 							outMessage3(mTrack[i].mStatus,mTrack[i].mMdata1,mTrack[i].mMdata2);
 						} else {
