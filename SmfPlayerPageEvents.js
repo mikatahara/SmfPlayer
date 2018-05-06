@@ -43,6 +43,8 @@ window.addEventListener("load", function(){
 		for(var i=0; i<16; i++){
 			outMessage3(0xb0+i,  0x78, 0x00);
 		}
+		for(var i=0; i<16; i++)
+			for(var j=0; j<=32; j++) setLEDOff(i,j);
 	}
 
 	function playStart()
