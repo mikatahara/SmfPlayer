@@ -31,8 +31,8 @@ function setLEDstatus(status,data1,data2){
 	var ch = status&0x0F;
 	var note = data1;
 
-	if((status&0xF0)==0x80) setLEDOff(ch, note);
-	if((status&0xF0)==0x90) setLEDOn(ch, note);
+	if((status&0xF0)==0x80 || data2==0) setLEDOff(ch, note);
+	else if((status&0xF0)==0x90) setLEDOn(ch, note);
 }
 
 function setLEDOn(ch, note)
