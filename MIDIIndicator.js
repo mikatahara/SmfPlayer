@@ -8,12 +8,12 @@ window.addEventListener('load', function ()
 	fdg1 = new DrawGraph(0,1200,0,600);
 	fdg1.fSetCanvas(document.getElementById('bkg'));
 	fdg1.fResize();
-	fdg1.fLine(0,0,fdg1.cv.width,fdg1.cv.height);
+//	fdg1.fLine(0,0,fdg1.cv.width,fdg1.cv.height);
 
-	fdg1.fSetViewPort(-4,4,-4,4);
+//	fdg1.fSetViewPort(-4,4,-4,4);
 	fdg1.fSetWindowXY(0,fdg1.cv.width,0,fdg1.cv.height);
-	fdg1.fVLine(-4,0,4,0);
-	fdg1.fVStrokeDottedLine(0,-4,0,4);
+//	fdg1.fVLine(-4,0,4,0);
+//	fdg1.fVStrokeDottedLine(0,-4,0,4);
 
 	fdg1.fSetViewPort(0,48,0,17);
 	
