@@ -1,9 +1,3 @@
-window.addEventListener("load", function(){
-	document.getElementById("ton").addEventListener("click", function(){playStart()}, false); 
-	document.getElementById("toff").addEventListener("click", function(){playStop()}, false); 
-	document.getElementById("evi1").addEventListener("change", function(){seteVY1(this)}, false); 
-}, true);
-
 	var mCount	=0;
 	var meVY1	=0;
 	var timerId	=0;
@@ -12,20 +6,32 @@ window.addEventListener("load", function(){
 	var ele = null;
 	var ele2 = null;
 
+	window.onload=function(){
+		mCount	=0;
+		meVY1	=0;
+		timerId	=0;
+		timerId2=0;
+		ele		= document.getElementById("log");
+		ele2	= document.getElementById("pos");
+		runTest2();
 
-window.addEventListener("load", function(){
-	mCount	=0;
-	meVY1	=0;
-	timerId	=0;
-	timerId2=0;
-	ele		= document.getElementById("log");
-	ele2	= document.getElementById("pos");
-	runTest2();
-}, false);
+		$("#anoff").click(function() {
+			for(var i=0; i<16; i++)
+				outMessage3(0xB0+i,123,0x7F);
+  		});
 
-//	document.getElementById("ton").addEventListener("click", function(){playStart()}, false); 
-//	document.getElementById("toff").addEventListener("click", function(){playStop()}, false); 
-//	document.getElementById("evi1").addEventListener("change", function(){seteVY1(this)}, false); 
+		$("#ton").click(function() {
+			playStart();
+  		});
+		$("#toff").click(function() {
+			playStop();
+			for(var i=0; i<16; i++)
+				outMessage3(0xB0+i,123,0x7F);
+  		});
+		$("#evi1").change(function() {
+			seteVY1($(this));
+		});
+	};
 
 	function seteVY1(e)
 	{
