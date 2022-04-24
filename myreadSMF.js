@@ -178,7 +178,7 @@ MTrk.prototype={
 				var xx=this.mData[ilocal];
 				isysexnum=(isysexnum<<7)+xx&0x7F;
 				ilocal++;
-				if(!xx&0x80) break;
+				if(!(xx&0x80)) break;
 			}
 			while(this.mData[ilocal+j]!=0xF7){
 				this.mSysMessage[j]=this.mData[ilocal+j];
