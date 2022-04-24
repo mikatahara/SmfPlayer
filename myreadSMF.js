@@ -173,6 +173,13 @@ MTrk.prototype={
 		} else if (this.mStatus==0xF0){
 			var j=0;
 			var ilocal=st;
+			var isysexnum=0;
+			while(1){
+				var xx=this.mData[ilocal];
+				isysexnum=(isysexnum<<7)+xx&0x7F;
+				ilocal++;
+				if(!xx&0x80) break;
+			}
 			while(this.mData[ilocal+j]!=0xF7){
 				this.mSysMessage[j]=this.mData[ilocal+j];
 				j++;
