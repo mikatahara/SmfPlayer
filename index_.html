@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<!-- 20250412.2 index.html -->
 
 <HEAD>
 	<meta charset="utf-8">
@@ -35,11 +34,11 @@
 		}
 
 		#pos {
-			width: 440px;
+			width: 340px;
 			height: 120px;
 			position: absolute;
 			top: 120px;
-			left: 800px;
+			left: 900px;
 			margin: .5em 0 .5em 0;
 			padding: .5em;
 			background-color: #222222;
@@ -82,10 +81,7 @@
 			font-size: 12pt;
 			line-height: 1.5em
 		}
-
-		-->
 	</style>
-
 
 </HEAD>
 
@@ -93,6 +89,7 @@
 
 <body>
 	<h2 style="text-align:center;">SMF PLAYER</h2>
+
 
 
 	<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
@@ -106,15 +103,15 @@
 		3)Click "Stop" to stop playing.
 	</div>
 
-	<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
-	<form class="sans" style="color: #222222; position: absolute; top:90px; left:420px; font-size:14px;">
-		<label for="filedata" style="background-color:#dddddd; padding: 2px 20px; border-radius: 10px; width:900px">
+	<!--	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<form id="sans" style="color: #222222; position: absolute; top:74px; left:350px;">
+		<label for="filedata" style="background-color:#dddddd; padding: 2px 20px; border-radius: 12px; width:400px">
 			Select SMF File
-			<input type="file" id="filedata" style="display:none;" accept="audio/*" onchange="LoadSMFFile()">
+			<input type="file" id="filedata" style="display:none;">
 		</label>
 	</form>
 
-	<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
+	<!--	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 	<div class="sans" style="background-color: #222222; 
 	color: #dddddd; position: absolute; top:56px; left:100px;">
 		<br>
@@ -127,7 +124,7 @@
 		<script>setOutputMenuID(document.output_device_select.ids);</script>
 	</div>
 
-	<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
+	<!--	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 	<form class="sans" style="color: #dddddd; position: absolute; top:640px; left:46%;">
 		<input type="button" id="ton" value="Play">
 		<input type="button" id="toff" value="Stop">
@@ -135,32 +132,28 @@
 		<br>
 	</form>
 
-	<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
+	<!--	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-	<form id="sans" style="color: #dddddd; position: absolute; top:90px; left:560px;">
+	<form class="sans" style="color: #dddddd; position: absolute; top:74px; left:520px;">
 		<input type="checkbox" id="evi1" value=1>For eVY1
 	</form>
 
-	<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 	<canvas id="bkg"></canvas>
 
-
-	<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
-	<script>
-		(function (i, s, o, g, r, a, m) {
-			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date(); a = s.createElement(o),
-				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-		ga('create', 'UA-66117399-2', 'auto');
-		ga('send', 'pageview');
-	</script>
-	<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
-
 </body>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date(); a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-<!-- 	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	-->
+	ga('create', 'UA-66117399-2', 'auto');
+	ga('send', 'pageview');
+
+</script>
 
 </html>
