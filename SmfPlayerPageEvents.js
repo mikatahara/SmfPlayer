@@ -1,7 +1,9 @@
 	var mCount	=0;
+	var mCountLy=0;
 	var meVY1	=0;
 	var timerId	=0;
-	var timerId2=0;
+	var timerId2=0;	
+	var timerId3=0;	//Lyric
 
 	var ele = null;
 	var ele2 = null;
@@ -46,6 +48,7 @@
 		ele.innerText += "sequence end\n";
 		clearInterval(timerId);
 		clearInterval(timerId2);
+		clearInterval(timerId3);
 		for(var i=0; i<16; i++){
 			outMessage3(0xb0+i,  0x78, 0x00);
 		}
@@ -64,10 +67,6 @@
 			mTrack[i].mEnd=0;
 			mTrack[i].fDeleteFF();
 		}
-
-		var start = new Date();
-		var sstime = start.getTime()
-		var endtime=0;
 
 		timerId2=setInterval(function(){
 
@@ -91,9 +90,14 @@
 				ele.innerText += "sequence end\n";
 				clearInterval(timerId);
 				clearInterval(timerId2);
+				clearInterval(timerId3);
 			}
 
 		}, 120 );
+
+		var start = new Date();
+		var sstime = start.getTime()
+		var endtime=0;
 
 		timerId=setInterval(function(){
 			var ee = new Date();
@@ -113,8 +117,8 @@
 						setLEDstatus(mTrack[i].mStatus,mTrack[i].mMdata1,mTrack[i].mMdata2);
 						if(!meVY1){
 							outMessage3(mTrack[i].mStatus,mTrack[i].mMdata1,mTrack[i].mMdata2);
+							sleep(1);
 						} else {
-							var ch=mTrack[i].mStatus &0x0F;
 							switch(ch){
 								case 0x00:
 									outMessage3(mTrack[i].mStatus|0x0F,mTrack[i].mMdata1,mTrack[i].mMdata2);
@@ -125,7 +129,6 @@
 									outMessage3(mTrack[i].mStatus,mTrack[i].mMdata1,mTrack[i].mMdata2);
 							}
 						}
-//						if((mTrack[i].mStatus&0xF0)==0x90) console.log(mCount,mTrack[i].mNexttime,mTrack[i].mStatus);
 						break;
 
 					case 0xC0:
@@ -156,7 +159,26 @@
 			}
 		}
 
-		}, 1 );
+		}, 4 );
+
+		var sstimeLy = sstime-100;
+		var endtimeLy=0;
+		log.innerText = "";
+		mXfkm.fSetLyric(true);
+		mXfkm.fDeleteFF();
+
+		timerId3=setInterval(function(){
+			var ee = new Date();
+			endtimeLy=ee.getTime();
+			mCountLy += (endtimeLy-sstimeLy)*mRate;
+			sstimeLy=endtimeLy;
+
+			while((mCountLy >= mXfkm.mNexttime) && (mXfkm.mEnd==0)){
+				mXfkm.fEvent();
+				mXfkm.fDeleteFF();
+			}
+
+		}, 16 );
 
 	}
 
@@ -192,3 +214,7 @@
 		}
 	}	
 
+
+function sleep(milliseconds) {
+	return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
